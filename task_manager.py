@@ -41,8 +41,11 @@ def delete_task(task_list):
     try:
         choice = int(input("Enter the number of the task to delete: "))
         #Step 3: Remove the task from the list
-        removed = task_list.pop(choice - 1)
-        print(f"Task '{removed}' deleted.")
+        if 1 <= choice <= len(task_list):
+            removed = task_list.pop(choice - 1)
+            print(f"Task '{removed}' deleted.")
+        else:
+            print("Invalid task number.")
         #Step 4: Save the updated list back to the file
         save_all_tasks(task_list)
     except (ValueError, IndexError):
@@ -68,3 +71,4 @@ while choice != "3":
         print("Goodbye!")
     else:
         print("Invalid choice, try again.")
+save_all_tasks(tasks)
