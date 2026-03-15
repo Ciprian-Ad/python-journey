@@ -278,6 +278,35 @@ A file scanning utility that creates a media inventory.
 
 ---
 
+### ✅ Project 07: FastAPI Book Scraper API (07_FastAPI)
+**Difficulty:** Intermediate
+**Time Investment:** 4-6 hours
+**Status:** Completed & Functional
+
+#### What I Built:
+- A modular book scraper class (`BookScraper`) for `books.toscrape.com` that parses titles/prices and exports to CSV.
+- A FastAPI backend (`book_api.py`) with endpoints for root, scraping, and adding books.
+- Data validation using Pydantic (`NewBook` model) and request handling.
+- Query parameter filtering (e.g., `pages`, `max_price`) and input validation with HTTP exceptions.
+
+#### Concepts Learned:
+- ✓ Building REST APIs with FastAPI (`FastAPI()`, route decorators @app.get/@app.post)
+- ✓ Request validation and serialization with Pydantic models
+- ✓ Query parameters and default values in endpoints
+- ✓ `HTTPException` for clean API error responses
+- ✓ Combining web APIs with web scraping logic
+- ✓ Writing modular code (`Book` and `BookScraper` classes, helper methods)
+- ✓ Exporting scraped data to CSV via Pandas
+- ✓ Running FastAPI apps with Uvicorn (e.g. `uvicorn book_api:app --reload`)
+
+#### Key Takeaways:
+- FastAPI makes API development quick and type-safe with automatic docs (`/docs`).
+- Pydantic models provide structured request validation and clear error feedback.
+- Modular design (scraper class + API wrapper) improves maintainability and reusability.
+- Filtering and validation create robust endpoints for real-world clients.
+
+---
+
 ## 💡 Concepts Mastered
 
 ### Tier 1: Fundamentals ✅
@@ -332,6 +361,9 @@ A file scanning utility that creates a media inventory.
 8. **Pathlib** - Modern file path handling
 9. **Shutil** - File operations
 10. **Collections** - Specialized data structures (Counter)
+11. **FastAPI** - Building modern REST APIs with automatic docs
+12. **Pydantic** - Data validation and settings management
+13. **Uvicorn** - ASGI server for running FastAPI apps
 
 ### Best Practices Learned:
 - ✓ Meaningful variable names
@@ -342,6 +374,9 @@ A file scanning utility that creates a media inventory.
 - ✓ Respecting API rate limits and servers
 - ✓ Secure storage of credentials (.env files)
 - ✓ Modular code structure
+- ✓ API validation and response modeling
+- ✓ Clear endpoint design with query filtering
+- ✓ Use auto-generated docs for quick API testing
 
 ---
 
@@ -410,9 +445,9 @@ A file scanning utility that creates a media inventory.
 
 #### 6. **Version Control & Collaboration** (1 week)
 **Why:** Essential for any real development
-- [ ] Git basics (init, add, commit, push)
-- [ ] GitHub workflow
-- [ ] .gitignore files
+- [x] Git basics (init, add, commit, push)
+- [x] GitHub workflow
+- [x] .gitignore files
 - [ ] Branching and merging
 - [ ] Collaborative development
 
@@ -584,5 +619,5 @@ A file scanning utility that creates a media inventory.
 
 ---
 
-**Last Updated:** March 11, 2026  
+**Last Updated:** March 15, 2026  
 **Next Milestone:** Complete first test suite + Deploy first web app
