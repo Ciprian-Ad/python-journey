@@ -6,7 +6,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, Session
 
 # --- 1. Database Setup ---
 # We tell SQLAlchemy to create a local SQLite file called 'books.db'
-SQLALCHEMY_DATABASE_URL = "sqlite:///./books.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./data/books.db"
 
 # The Engine is the core connection to the database
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
