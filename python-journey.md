@@ -211,99 +211,67 @@ A file organization utility that automatically sorts files into categorized fold
 Automation scripts save time on repetitive tasks and demonstrate practical use of Python for system administration.
 
 ---
-
-### ✅ Project 06: Data Engineering & Analytics (05_data_engineering)
-**Difficulty:** Advanced  
-**Time Investment:** 8-10 hours  
-**Status:** Completed & Functional
-
-This is a comprehensive project with 4 Python modules exploring data manipulation, visualization, and analysis using Pandas and Plotly.
-
-#### **Module 1: Analytics.py**
-A tutorial-style script demonstrating core Pandas concepts.
-
-**Topics:**
-- ✓ Creating DataFrames from dictionaries
-- ✓ `df.head()` and `df.describe()` for exploration
-- ✓ Filtering with boolean indexing: `df[df["Genre"] == "Sci-Fi"]`
-- ✓ Grouping with `groupby()` for aggregation
-- ✓ Interactive visualizations with Plotly.Express
-
-**Output:** Interactive bar charts in browser
+### ✅ Project 06: Data Engineering with Pandas (05_data_engineering)
+**Difficulty:**  Beginner-Intermediate
+**Time Investment:** 2-4 hours
+**Status:** Completed & Functional  
+#### What I Built:
+1. `analytics.py` - Analyzes Netflix titles dataset for insights (genre distribution, release trends, top directors)
+2. `dashboard.py` - Interactive terminal dashboard with Rich and Plotext visualizations
+3. `data_explorer.py` - CLI tool for exploring dataset columns and statistics
+4. `library_exporter.py` - Exports cleaned dataset to CSV with proper formatting and missing value handling.
+#### Concepts Learned:
+- ✓ **Pandas DataFrames:** Loading CSV, exploring data, filtering, grouping
+- ✓ **Data Cleaning:** Handling missing values, string manipulation, type conversion
+- ✓ **Data Analysis:** Value counts, groupby, aggregation functions
+- ✓ **Visualization:** Plotting with Plotext, creating Rich tables
+- ✓ **CLI Interaction:** User input for dynamic data exploration
+- ✓ **Exporting Data:** Writing cleaned data back to CSV with formatting
+#### Key Takeaway:Pandas is a powerful tool for data manipulation and analysis, allowing you to extract insights and create visualizations with minimal code. Combining it with Rich and Plotext creates engaging terminal applications for data exploration.
 
 ---
 
-#### **Module 2: Data_explorer.py**
-A practical guide to exploring real Netflix dataset (netflix_titles.csv)
-
-**Concepts Practiced:**
-- ✓ **Reading CSV files:** `pd.read_csv()`
-- ✓ **DataFrame inspection:** `.shape`, `.head()`, `.dtypes`
-- ✓ **Complex filtering:**
-  - Single condition: `df[df["type"] == "TV Show"]`
-  - Multiple conditions: `df[(df["type"] == "Movie") & (df["release_year"] > 2020)]`
-  - Sorting: `.sort_values(by=column, ascending=False)`
-- ✓ **Missing value handling:**
-  - Detection: `df.isna().sum()`, `df.isnull().sum()`
-  - Filling: `.fillna("Unknown")`
-- ✓ **Data aggregation:**
-  - Value counts: `df["type"].value_counts()`
-  - Resetting index: `.reset_index()`
-- ✓ **String manipulation:**
-  - `.str.replace()` for cleaning
-  - Type conversion: `.astype("Int64")`
-- ✓ **Time-series analysis:**
-  - Grouping by year: `groupby("release_year")`
-  - Line charts for trends
-- ✓ **Interactive visualization:**
-  - Bar charts with Plotly
-  - Line charts for trends
-
-**Key Insights Extracted:**
-- Netflix has more TV Shows than Movies
-- Movies were cleaned to extract numeric duration
-- Observable trends in movie releases over time
-
----
-
-#### **Module 3: Library_exporter.py**
-A file scanning utility that creates a media inventory.
-
-**Concepts:**
-- ✓ Path scanning with `glob()` patterns
-- ✓ File metadata: `stat()`, file size calculations
-- ✓ Timestamp conversion to year
-- ✓ DataFrame creation from collected data
-- ✓ Exporting to CSV for further analysis
-
----
-
-### ✅ Project 07: FastAPI Book Scraper API (07_FastAPI)
-**Difficulty:** Intermediate
-**Time Investment:** 4-6 hours
+### ✅ Project 07: OOP Practice (06_oop_practice)
+**Difficulty:** Beginner  
+**Time Investment:** 1-2 hours  
 **Status:** Completed & Functional
 
 #### What I Built:
-- A modular book scraper class (`BookScraper`) for `books.toscrape.com` that parses titles/prices and exports to CSV.
-- A FastAPI backend (`book_api.py`) with endpoints for root, scraping, and adding books.
-- Data validation using Pydantic (`NewBook` model) and request handling.
-- Query parameter filtering (e.g., `pages`, `max_price`) and input validation with HTTP exceptions.
+Two small object-oriented practice scripts:
+1. `oop_basics.py` - simple class instantiation and method call (`Dog` class).
+2. `oop_smartdevices.py` - inheritance with a base `SmartDevice`, and specialized subclasses (`SmartLight`, `SmartThermostat`) with state and control methods.
 
 #### Concepts Learned:
-- ✓ Building REST APIs with FastAPI (`FastAPI()`, route decorators @app.get/@app.post)
-- ✓ Request validation and serialization with Pydantic models
-- ✓ Query parameters and default values in endpoints
-- ✓ `HTTPException` for clean API error responses
-- ✓ Combining web APIs with web scraping logic
-- ✓ Writing modular code (`Book` and `BookScraper` classes, helper methods)
-- ✓ Exporting scraped data to CSV via Pandas
-- ✓ Running FastAPI apps with Uvicorn (e.g. `uvicorn book_api:app --reload`)
+- ✓ Class definitions and `__init__` constructors
+- ✓ Instance methods and returning formatted strings
+- ✓ Object instantiation and method invocation
+- ✓ Inheritance (`super()`, subclass constructors)
+- ✓ Encapsulation of state (`is_on`, `brightness`, `temperature`)
+- ✓ Code reuse through a parent class and specialized device behaviors
+
+#### Key Takeaway:
+Reinforced core OOP principles by building domain-specific classes and applying inheritance to create reusable smart device components.
+
+---
+
+### ✅ Project 07: FastAPI CRUD & Web Scraping ETL (07_FastAPI)
+**Difficulty:** Advanced
+**Time Investment:** 8-10 hours
+**Status:** Completed & Containerized
+
+#### What I Built:
+A complete Extract, Transform, Load (ETL) pipeline and REST API. It scrapes book data from the web, validates it, and permanently saves it to a SQLite database. The entire application is packaged into a Docker container with persistent volumes.
+
+#### Concepts Learned:
+- ✓ **RESTful API Design:** Implemented full CRUD (POST, GET, PUT, DELETE) operations.
+- ✓ **Data Validation:** Used Pydantic models (`NewBook`) to strictly validate incoming JSON payloads.
+- ✓ **ORM & Databases:** Replaced temporary memory with SQLAlchemy and SQLite for persistent data storage.
+- ✓ **ETL Pipelines:** Built a `/scrape-and-save` endpoint that triggers a scraper, transforms the data, and bulk-inserts it into the database while checking for duplicates.
+- ✓ **Containerization:** Wrote a `Dockerfile` to package the app and dependencies (`python:3.11-slim`).
+- ✓ **Docker Volumes:** Used bind mounts (`-v`) to ensure the SQLite database survives container restarts.
 
 #### Key Takeaways:
-- FastAPI makes API development quick and type-safe with automatic docs (`/docs`).
-- Pydantic models provide structured request validation and clear error feedback.
-- Modular design (scraper class + API wrapper) improves maintainability and reusability.
-- Filtering and validation create robust endpoints for real-world clients.
+Connecting a web scraper to a real database via an API bridges the gap between scripting and backend engineering. Containerizing the app with Docker completely solves the "it works on my machine" problem and prepares the app for deployment on a Raspberry Pi.
 
 ---
 
@@ -340,7 +308,8 @@ A file scanning utility that creates a media inventory.
 - [x] CSV file handling
 - [x] Interactive visualizations
 - [ ] NumPy arrays and numerical computing
-- [ ] Database interactions (SQL)
+- [x] Database interactions (SQL)
+- [x] Docker basics & Containerization
 - [ ] Advanced visualization (Seaborn, Matplotlib)
 - [ ] Statistical analysis
 - [ ] Time-series analysis
@@ -397,9 +366,9 @@ A file scanning utility that creates a media inventory.
 
 #### 2. **Database Fundamentals** (2-3 weeks)
 **Why:** JSON files won't scale; databases are essential for real apps
-- [ ] SQL basics (SELECT, INSERT, UPDATE, DELETE)
-- [ ] SQLite (built-in, perfect for learning)
-- [ ] SQLAlchemy ORM (Object-Relational Mapping)
+- [x] SQL basics (SELECT, INSERT, UPDATE, DELETE)
+- [x] SQLite (built-in, perfect for learning)
+- [x] SQLAlchemy ORM (Object-Relational Mapping)
 - [ ] Data relationships (1-to-many, many-to-many)
 
 **Practice Project:** Rebuild Task Manager with SQLite instead of JSON
