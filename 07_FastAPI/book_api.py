@@ -131,6 +131,34 @@ def update_book(book_id: int, updated_book: NewBook, db: Session = Depends(get_d
     db.refresh(book_to_update)
     
     return {"message": f"Book {book_id} updated successfully.", "book": {"id": book_id, "title": updated_book.title, "price": updated_book.price}}
+
+# 8. Scrape and save endpoint
+@app.post("/scrape-and-save")
+def scrape_and_save(pages: int = 1, db: Session = Depends(get_db)):
+    if pages < 1 or pages > 50:
+        raise HTTPException(status_code=400, detail="Pages must be between 1 and 50.")
+    
+    # Initialize and run the scraper
+    scraper = BookScraper(base_url="http://books.toscrape.com/", total_pages=pages)
+    scraper.run()
+    # Convert scraped books to a list of dictionaries
+    scraped_data = [book.to_dict() for book in scraper.scraped_books]
+    new_books_count = 0 # Counter for new books added to the database
+    # Save scraped books to the database
+    for book in scraped_data:
+        if db.query(DBBook).filter(DBBook.title == book['Title']).first():
+            continue  # Skip if the book already exists in the database
+        db_book = DBBook(title=book['Title'], price=book['Price'])
+        db.add(db_book)
+        new_books_count += 1
+    
+    db.commit()  # Commit all changes at once for better performance
+    
+    return {
+        "message": "Scraping complete!",
+        "scraped_total": len(scraped_data),
+        "new_added": new_books_count
+    }
 # (Optional) You can leave this completely empty now, or use it for testing 
 # if you ever run the file directly with 'python book_api.py'
 if __name__ == "__main__":
